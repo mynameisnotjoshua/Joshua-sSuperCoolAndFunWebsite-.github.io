@@ -93,49 +93,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Visitor Counter</title>
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      text-align: center;
-    }
+  <script>
+    // Function to update the visitor count
+    function updateCounter() {
+      // Retrieve the current count from localStorage or initialize to 0
+      let count = localStorage.getItem('visitorCount') || 0;
 
-    h1 {
-      color: #333;
-    }
+      // Increment the count
+      count++;
 
-    #counter {
-      font-size: 24px;
-      color: #007bff;
-      margin-top: 20px;
+      // Update the HTML element with the new count
+      document.getElementById('counter').innerText = `Total Visitors: ${count}`;
+
+      // Store the updated count in localStorage
+      localStorage.setItem('visitorCount', count.toString());
     }
-  </style>
+  </script>
 </head>
 <body>
-  <h1>Number Of Times Visited!</h1>
-  <p id="counter">Loading...</p>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Check if the "visited" cookie is set
-      const hasVisited = document.cookie.split(';').some((item) => item.trim().startsWith('visited='));
-
-      if (!hasVisited) {
-        let visitorCount = localStorage.getItem('visitorCount') || 0;
-        visitorCount++;
-
-        localStorage.setItem('visitorCount', visitorCount);
-
-        // Set the "visited" cookie to prevent further increments
-        document.cookie = 'visited=true; max-age=86400'; // Expires in 24 hours
-
-        const counterElement = document.getElementById('counter');
-        counterElement.textContent = ` ${visitorCount}`;
-      } else {
-        // Display a message if the user has already visited
-        const counterElement = document.getElementById('counter');
-        counterElement.textContent = 'Welcome back!';
-      }
-    });
-  </script>
+  <div>
+    <h1>Visitor Counter</h1>
+    <p id="counter">Loading...</p>
+    <button onclick="updateCounter()">Increment Counter</button>
+  </div>
 </body>
 </html>
