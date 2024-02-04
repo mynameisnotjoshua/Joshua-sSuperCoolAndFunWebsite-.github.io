@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joshua's Super Cool And Fun Website!</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        header {
+            background-color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            color: #000000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #ffffff;
+            padding: 10px;
+        }
+
+        nav a {
+            color: #000000;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #000000;
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Joshua's Super Cool And Fun Website!</h1>
+        <p id="randomPhrase">Get ready for a blast from the past!</p>
+        <script>
+            // JavaScript to change the phrase to a random word
+            const phrases = ['Micky Mantle!', 'Ehhh foggitabahdit', 'Rock Harley!', 'Time Warp Experience! Dude!', 'Rock on harley dude!', 'Thats So Rock On Bruh!', 'so rock harley my guy!','Sup surfer dude!','skate on dude!','Who The Fuck Keeps Putting Asterisks In Our Fucking Servers!','Lets go Detroit Tigars!','Lets go New York Yankees!','Detroit Tigars!','New York yankees!','Ya Cant Pahhak Ya Cahh In Havahhd Yahhd','if i wake up and find all my website images have been changed to images of asterisks im gonna explode!'];
+            const randomPhraseIndex = Math.floor(Math.random() * phrases.length);
+
+            document.getElementById('randomPhrase').textContent = phrases[randomPhraseIndex];
+        </script>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <main>
+        <h2>Welcome to My Cool Website!</h2>
+        <p>What do i do? i do super cool stuff! i post my arguements all diffrent kinds of cool stuff! i use this website for basicley everything!</p>
+    </main>
+
+    <footer>
+        <p>You Found Secret 1 of 1</p>
+    </footer>
+
+</body>
+</html>
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visitor Counter</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    #counter {
+      font-size: 24px;
+      color: #007bff;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Number Of Times Visited!</h1>
+  <p id="counter">Loading...</p>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Check if the "visited" cookie is set
+      const hasVisited = document.cookie.split(';').some((item) => item.trim().startsWith('visited='));
+
+      if (!hasVisited) {
+        let visitorCount = localStorage.getItem('visitorCount') || 0;
+        visitorCount++;
+
+        localStorage.setItem('visitorCount', visitorCount);
+
+        // Set the "visited" cookie to prevent further increments
+        document.cookie = 'visited=true; max-age=86400'; // Expires in 24 hours
+
+        const counterElement = document.getElementById('counter');
+        counterElement.textContent = ` ${visitorCount}`;
+      } else {
+        // Display a message if the user has already visited
+        const counterElement = document.getElementById('counter');
+        counterElement.textContent = 'Welcome back!';
+      }
+    });
+  </script>
+</body>
+</html>
